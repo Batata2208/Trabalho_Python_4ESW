@@ -15,7 +15,7 @@ sql_Processos = """
         id_processo INTEGER PRIMARY KEY AUTOINCREMENT,
         id_peca INTEGER,
         nome_processo TEXT NOT NULL,
-        tempo_gasto INTEGER NOT NULL, -- Pode ser em minutos ou horas, depende do formato que você preferir
+        tempo_gasto INTEGER NOT NULL,
         data_processo DATE NOT NULL,
         FOREIGN KEY (id_peca) REFERENCES Pecas (id_peca)
     );
