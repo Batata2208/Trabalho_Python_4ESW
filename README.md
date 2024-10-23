@@ -1,6 +1,9 @@
 Diogo Takeiti Nakamura Yamaguti RA: 106114-2023
+
 Dyames Eduardo da Silva         RA: 92843-2022
+
 João Pedro Ricardo              RA: 102742-2023
+
 
 Visão geral do negócio
 
