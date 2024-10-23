@@ -1,3 +1,7 @@
+Diogo Takeiti Nakamura Yamaguti RA: 106114-2023
+Dyames Eduardo da Silva         RA: 92843-2022
+João Pedro Ricardo              RA: 102742-2023
+
 Visão geral do negócio
 
 Fênix Confecção é uma microempresa especializada no setor têxtil, focada na produção terceirizada de peças de vestuário, atuando como parceira de empresas do segmento têxtil e pequenas marcas(próprias). Atualmente a empresa busca melhorias internas para aumentar seu desempenho e ter um melhor gerenciamento de seus processos.
