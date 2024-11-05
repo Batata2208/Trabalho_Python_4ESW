@@ -319,7 +319,7 @@ def deletar_funcionario(nome_funcionario):
     finally:
         if conexao:
             conexao.close()
-            
+
 
 #listar os funcionários
 def Lista_Funcionarios():
@@ -338,7 +338,6 @@ def Lista_Funcionarios():
     finally:
         if conexao:
             conexao.close()
-
 
 
 #hitórico
