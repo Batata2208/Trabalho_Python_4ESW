@@ -189,6 +189,54 @@ def inserir_peca(id_processo, nome_processo, tempo_gasto, funcionario, valor_tot
         if conexao:
             conexao.close()
 
+#Verificar se a peça existe
+def verifica_peca(nome_peca):
+    try:
+        conexao = con.connect(os.path.join(os.path.dirname(__file__), "Banco_Oficial.db"))
+        cur = conexao.cursor()
+
+        # Consulta para verificar se a peça existe
+        cur.execute("SELECT COUNT(*) FROM Pecas WHERE nome_processo = ?", (nome_peca))
+        resultado = cur.fetchone()[0]
+
+        return resultado > 0  # Retorna True se existir, False se não existir
+
+    except con.DatabaseError as erro:
+        print("Erro ao verificar peça:", erro)
+        return False
+    finally:
+        if conexao:
+            conexao.close()
+
+#deletar peça 
+def deletar_peca(nome_peca):
+    try:
+        conexao = con.connect(os.path.join(os.path.dirname(__file__), "Banco_Oficial.db"))
+        cur = conexao.cursor()
+
+        cur.execute("DELETE FROM Pecas WHERE nome_processo = ?", (nome_peca,))
+        conexao.commit()
+    except con.DatabaseError as erro:
+        print("Erro ao deletar peça:", erro)
+    finally:
+        if conexao:
+            conexao.close()
+
+#atualizar peça
+def atualizar_peca(id_processo, nome_processo, tempo_gasto, funcionario, valor_total_da_peça):
+    try:
+        conexao = con.connect(os.path.join(os.path.dirname(__file__), "Banco_Oficial.db"))
+        cur = conexao.cursor()
+
+        cur.execute("UPDATE Pecas SET id_processo = ?, tempo_gasto = ?, funcionario = ?, valor_total_da_peça = ? WHERE nome_processo = ?", 
+                    (id_processo, tempo_gasto, funcionario, valor_total_da_peça, nome_processo))
+        conexao.commit()
+    except con.DatabaseError as erro:
+        print("Erro ao atualizar peça:", erro)
+    finally:
+        if conexao:
+            conexao.close() 
+
 #listar as peças
 def Lista_Pecas():
     try:
@@ -243,6 +291,35 @@ def verifica_funcionario(nome_funcionario, senha_funcionario):
     finally:
         if conexao:
             conexao.close()
+
+#atualizar funcionário
+def atualizar_funcionario(nome, senha, salario, cargo):
+    try:
+        conexao = con.connect(os.path.join(os.path.dirname(__file__), "Banco_Oficial.db"))
+        cur = conexao.cursor()
+
+        cur.execute("UPDATE Funcionario SET senha = ?, salario = ?, cargo = ? WHERE nome = ?", (senha, salario, cargo, nome))
+        conexao.commit()
+    except con.DatabaseError as erro:
+        print("Erro ao atualizar funcionário:", erro)
+    finally:
+        if conexao:
+            conexao.close()
+
+#deletar funcionário
+def deletar_funcionario(nome_funcionario):
+    try:
+        conexao = con.connect(os.path.join(os.path.dirname(__file__), "Banco_Oficial.db"))
+        cur = conexao.cursor()
+
+        cur.execute("DELETE FROM Funcionario WHERE nome = ?", (nome_funcionario,))
+        conexao.commit()
+    except con.DatabaseError as erro:
+        print("Erro ao deletar funcionário:", erro)
+    finally:
+        if conexao:
+            conexao.close()
+            
 
 #listar os funcionários
 def Lista_Funcionarios():
