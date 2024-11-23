@@ -173,7 +173,6 @@ def cadastrar_funcionario(painel_admin):
                            (nome, senha, cargo, salario))
             conexao.commit()
             messagebox.showinfo("Sucesso", "Funcionário cadastrado com sucesso!")
-            cadastro.destroy()
         
         except sqlite3.DatabaseError as erro:
             messagebox.showerror("Erro", f"Erro ao cadastrar funcionário: {erro}")
@@ -226,9 +225,7 @@ def excluir_funcionario(painel_admin):
 
         cursor.execute("DELETE FROM Funcionario WHERE nome = ?", (nome_funcionario,))
         conexao.commit()
-        messagebox.showinfo("Sucesso", "Funcionário excluído com sucesso!")
-        excluir.destroy()
-        
+        messagebox.showinfo("Sucesso", "Funcionário excluído com sucesso!")        
 
     # Botão para excluir o funcionário
     tk.Button(excluir, text="Excluir Funcionário", command=excluir_funcionario_do_banco, font=("Arial", 18), bg="#f44336", fg="white", width=20, height=2).pack(pady=20)
@@ -245,7 +242,7 @@ def abrir_relatorio(painel_admin):
     # Cria a nova janela para o relatório
     relatorio_window = tk.Tk()
     relatorio_window.title("Relatório de Peças e Processos")
-    relatorio_window.geometry("800x600")  # Coloca a janela no modo maximizado
+    relatorio_window.geometry("1300x800")  # Coloca a janela no modo maximizado
     relatorio_window.iconbitmap(caminho_absoluto) #coloco a logo  # Coloca a janela no modo maximizado
     relatorio_window.config(bg='#f4f4f4')
     relatorio_window.after(10,lambda: centralizar_janela(relatorio_window))
@@ -510,7 +507,6 @@ def abrir_tela_pecas():
 
             conexao.commit()
             messagebox.showinfo("Sucesso", "Peça registrada com sucesso!")
-            tela_pecas.destroy()
 
         except sqlite3.DatabaseError as erro:
             messagebox.showerror("Erro", f"Erro ao registrar a peça: {erro}")
